@@ -1,0 +1,40 @@
+n = int(input('Quantidade de dias: '))
+reps = 0
+AÇOES = []
+
+while reps < n:
+    reps += 1
+    preço = float(input(f'Digite o preço da ação do dia {reps}: '))
+    AÇOES.append(preço)
+print()
+dias_venda = int(input('Quantidade máxima de dias permitidos para a venda das ações: '))
+din = float(input('Quantia disponível para a viagem: '))
+
+var_max = 0
+for i, acao in enumerate(AÇOES):
+    for d in range(i, i + dias_venda):
+        if d >= len(AÇOES) - 1:
+            break
+        var_temp = acao - AÇOES[d]
+
+        if var_temp > var_max:
+            var_max = var_temp
+            dia_compra = i
+            dia_venda = d
+            valor_compra = AÇOES[d]
+            valor_venda = acao
+
+lucro = valor_venda - valor_compra
+qtde_acoes = int(din) / valor_compra
+lucro_total = qtde_acoes * lucro
+
+print('\n')
+print('=-=' * 20)
+print('Dia da compra:', dia_compra)
+print('Valor de compra: R$', format(valor_compra, '.2f').replace('.', ','))
+print('Dia da venda:', dia_venda)
+print('Valor de venda: R$', format(valor_venda, '.2f').replace('.', ','))
+print('Quantidade de acoes compradas:', qtde_acoes)
+print('Lucro por ação: R$', format(lucro, '.2f').replace('.', ','))
+print("lucro total: R$", format(lucro_total, '.2f').replace('.', ','))
+print('=-=' * 20)
