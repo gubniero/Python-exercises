@@ -1,0 +1,31 @@
+ngolpes_ken = 0
+ngolpes_ryu = 0
+hp_ryu = int(input('O HP DE RYU É DE: '))
+hp_ken = int(input('O HP DE KEN É DE: '))
+while hp_ken >= 0 and hp_ryu >= 0:
+    dano_ken = float(input('dano do proximo golpe de KEN: '))
+    ngolpes_ken = ngolpes_ken + 1
+    hp_ryu = hp_ryu - dano_ken
+    print(f'RYU sofreu {dano_ken} de dano e está com {hp_ryu} de vida')
+    print('-'*33)
+    if hp_ryu <= 0:
+        print('=' * 33)
+        print('Luta Encerrada...')
+        print('=' * 33)
+        print('KEN É O VENCEDOR')
+        print(f'KEN APLICOU {ngolpes_ken} GOLPES')
+        print(f'RYU APLICOU {ngolpes_ryu} GOLPES')
+        break
+    dano_ryu = float(input('dano do proximo golpe de RYU: '))
+    ngolpes_ryu = ngolpes_ryu + 1
+    hp_ken = hp_ken - dano_ryu
+    print(f'KEN sofreu {dano_ryu} de dano e está com {hp_ken} de vida')
+    print('-'*33)
+    if hp_ken <= 0:
+        print('=' * 33)
+        print('Luta Encerrada...')
+        print('=' * 33)
+        print('RYU É O VENCEDOR')
+        print(f'RYU APLICOU {ngolpes_ryu} GOLPES')
+        print(f'KEN APLICOU {ngolpes_ken} GOLPES')
+        break
