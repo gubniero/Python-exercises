@@ -1,0 +1,110 @@
+#Gustavo Bredariol Niero  ~  RA:21008782
+n = int(input('Número de alunos: '))
+print('=' * 33)
+reps = 0
+ALUNOS = []
+while reps < n:
+
+    nome = input('Digite o nome do aluno: ')
+    ra = int(input('Digite o RA do aluno: '))
+    nota = float(input('Digite a nota do aluno: '))
+    ALUNOS.append([nome, ra, nota])
+
+    print('='*33)
+    reps += 1
+
+#menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu menu
+
+print()
+print('Bem Vindo(a)!!')
+
+while True:
+    print('MENU')
+    print('1. Incluir um aluno.')
+    print('2. Modificar nota de um aluno.')
+    print('3. Excluir um aluno.')
+    print('4. Relatórios.')
+    print('0. Encerrar menu.')
+    print('='*33)
+    opçao = int(input('Digite a ação desejada: '))
+    print('=' * 33)
+    if opçao == 4:
+        print()
+        print('Menu de relatórios selecionado.')
+        print('1. Consultar dados de um aluno.')
+        print('2. Imprimir a lista de alunos completa.')
+        print('3. Voltar ao menu principal.')
+        print('0. Encerrar o menu.')
+        while True:
+            print('='*33)
+            opçao_relatórios = int(input('Digite a ação desejada para o menu de relatórios: '))
+            print('=' * 33)
+            if opçao_relatórios == 1:
+                procurar = int(input('Qual RA deseja buscar? '))
+                for x in range(len(ALUNOS)):
+                    raaluno = ALUNOS[x][1]
+                    if procurar == raaluno:
+                        nota_aluno = ALUNOS[x][2]
+                        print(f'A nota do aluno é: {nota_aluno}')
+                continue
+
+            if opçao_relatórios == 2:
+                for aa in ALUNOS:
+                    print(f'\nRA: {aa[1]};     Nome: {aa[0]};     Nota: {aa[2]}')
+                continue
+
+            if opçao_relatórios == 3:
+                print('Menu de relatórios encerrado.')
+                opçao = 4444
+                break
+
+            if opçao_relatórios == 0:
+                opçao = 0
+                break
+
+            if opçao_relatórios != 0 and opçao_relatórios != 1 and opçao_relatórios != 2 and opçao_relatórios != 3:
+                print('Opção inválida. Tente novamente.')
+                continue
+
+    if opçao == 2:
+        modificar = int(input('Digite o RA do aluno que deseja modificar a nota: '))
+        for x in range(len(ALUNOS)):
+            raaluno = ALUNOS[x][1]
+            if modificar == raaluno:
+                print(f'A nota do aluno RA {ALUNOS[x][1]} foi {ALUNOS[x][2]}')
+                nova = float(input('Digite a nova nota: '))
+                ALUNOS[x].pop(2)
+                ALUNOS[x].insert(2, nova)
+                print(f'A nova nota do aluno é {ALUNOS[x][2]}')
+        continue
+
+    if opçao == 0:
+        print('Menu encerrado.')
+        break
+
+    if opçao == 4444:
+        continue
+
+    if opçao != 1 and opçao != 2 and opçao != 3 and opçao != 0 and opçao != 4444:
+        print('Opção inválida, tente novamente')
+        continue
+
+    if opçao == 1:
+        print('')
+        nome = input('Digite o nome do novo aluno: ')
+        ra = int(input('Digite o RA do novo aluno: '))
+        nota = float(input('Digite a nota do novo aluno: '))
+        ALUNOS.append([nome, ra, nota])
+        continue
+
+    if opçao == 3:
+        ra_excluir = int(input('Digite o RA do aluno desejado: '))
+        print('\n')
+        for a in range(0, len(ALUNOS)):
+            checagem = ALUNOS[a][1]
+            if checagem == ra_excluir:
+                nomealuno = ALUNOS[a][0]
+                del(ALUNOS[a])
+                print('O aluno foi removido com sucesso.')
+                break
+        continue
