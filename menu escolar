@@ -1,4 +1,3 @@
-#Gustavo Bredariol Niero  ~  RA:21008782
 n = int(input('Número de alunos: '))
 print('=' * 33)
 reps = 0
